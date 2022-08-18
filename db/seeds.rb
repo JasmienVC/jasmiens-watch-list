@@ -17,9 +17,11 @@ Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal masterm
 url = 'http://tmdb.lewagon.com/movie/top_rated'
 movies_serialized = URI.open(url).read
 movies = JSON.parse(movies_serialized)
-title = movies["results"][2]["original_title"]
-overview = movies["results"][2]["overview"]
-poster_url = movies["results"][2]["poster_path"]
-rating = movies["results"][2]["vote_average"]
-
-Movie.create(title: "#{title}", overview: "#{overview}" , poster_url: "https://image.tmdb.org/t/p/w500#{poster_url}", rating: "#{rating}")
+results = movies["results"].first(20)
+results.each do |result|
+  title = result["original_title"]
+  overview = result["overview"]
+  poster_url = result["poster_path"]
+  rating = result["vote_average"]
+  Movie.create(title: "#{title}", overview: "#{overview}" , poster_url: "https://image.tmdb.org/t/p/w500#{poster_url}", rating: "#{rating}")
+end
