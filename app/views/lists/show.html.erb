@@ -3,15 +3,15 @@
 <h3>movies</h3>
 <ul>
   <% @list.movies.each do |movie| %>
-    <li><%= movie %></li>
+    <li><%= movie.title %></li>
   <% end %>
 </ul>
 
 <h3>bookmarks</h3>
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
-    <li><%= bookmark %></li>
+    <li><%= bookmark.comment %></li>
   <% end %>
 </ul>
 
-<%= link_to "Back", 'lists_path' %>
+<%= link_to "Back", :back %>
