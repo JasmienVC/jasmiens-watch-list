@@ -6,10 +6,10 @@ url('<%= cl_image_path @list.photo.key, height: 300, scale: :fill, gravity: :fac
 
 <% @list.movies.each do |movie| %>
   <% movie.bookmarks.each do |bookmark| %>
-    <div class="card-product m-4">
+    <div class="card-product m-4 p-2">
       <div class="card-product-infos">
-        <h2><%= movie.title %></h2>
-        <p><%= bookmark.comment %></p>
+        <h2><%= movie.title %>: <%= bookmark.comment %></h2>
+        <p><%= movie.overview %></p>
         <p><%= link_to "Delete",
         bookmark_path(bookmark),
         data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
