@@ -1,13 +1,11 @@
-<div class="navbar-lewagon">
-  <p>My lists</p>
-  <p><%= link_to "New list", new_list_path %></p>
-  <i class="fa-regular fa-popcorn"></i>
-</div>
+<p>My lists</p>
+<p><%= link_to "New list", new_list_path %></p>
+
 
 <ul>
   <% @lists.each do |list| %>
     <li>
-      <%= list.name %>
+      <%= link_to list.name, list_path(list)%>
     </li>
   <% end %>
 </ul>
